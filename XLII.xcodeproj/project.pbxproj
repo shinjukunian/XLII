@@ -70,7 +70,7 @@
 		5A68E5BE27C3AE2C00D5BC40 /* MailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68E5BD27C3AE2C00D5BC40 /* MailController.swift */; };
 		5A701DE327C8BF9B00CB31B0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8230FA27C87EB000E61C86 /* WidgetKit.framework */; platformFilter = maccatalyst; };
 		5A701DE427C8BF9B00CB31B0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8230FC27C87EB000E61C86 /* SwiftUI.framework */; platformFilter = maccatalyst; };
-		5A701DEE27C8BF9C00CB31B0 /* Widget-macOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5A701DE227C8BF9B00CB31B0 /* Widget-macOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5A701DEE27C8BF9C00CB31B0 /* Widget-macOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5A701DE227C8BF9B00CB31B0 /* Widget-macOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5A701DF327C8BFC400CB31B0 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A82310E27C87F6200E61C86 /* WidgetView.swift */; };
 		5A701DF427C8BFC400CB31B0 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A10416527C8A13A00125E50 /* DateView.swift */; };
 		5A701DF527C8BFC400CB31B0 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A10416327C8A09000125E50 /* TimeView.swift */; };
@@ -92,7 +92,7 @@
 		5A8230FD27C87EB000E61C86 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8230FC27C87EB000E61C86 /* SwiftUI.framework */; platformFilter = maccatalyst; };
 		5A82310027C87EB000E61C86 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8230FF27C87EB000E61C86 /* Widget.swift */; };
 		5A82310327C87EB100E61C86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A82310227C87EB100E61C86 /* Assets.xcassets */; };
-		5A82310927C87EB100E61C86 /* Widget-iOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5A8230F927C87EB000E61C86 /* Widget-iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5A82310927C87EB100E61C86 /* Widget-iOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5A8230F927C87EB000E61C86 /* Widget-iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5A82310F27C87F6200E61C86 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A82310E27C87F6200E61C86 /* WidgetView.swift */; };
 		5A82311127C8831D00E61C86 /* XLIICore in Frameworks */ = {isa = PBXBuildFile; productRef = 5A82311027C8831D00E61C86 /* XLIICore */; };
 		5A82311327C88AEA00E61C86 /* DateEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A82311227C88AEA00E61C86 /* DateEntry.swift */; };
@@ -162,26 +162,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5A701DF227C8BF9C00CB31B0 /* Embed App Extensions */ = {
+		5A701DF227C8BF9C00CB31B0 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5A701DEE27C8BF9C00CB31B0 /* Widget-macOS.appex in Embed App Extensions */,
+				5A701DEE27C8BF9C00CB31B0 /* Widget-macOS.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5A82310D27C87EB100E61C86 /* Embed App Extensions */ = {
+		5A82310D27C87EB100E61C86 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5A82310927C87EB100E61C86 /* Widget-iOS.appex in Embed App Extensions */,
+				5A82310927C87EB100E61C86 /* Widget-iOS.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -577,7 +577,7 @@
 				163C1B38263A5AE500E1A69C /* Sources */,
 				163C1B39263A5AE500E1A69C /* Frameworks */,
 				163C1B3A263A5AE500E1A69C /* Resources */,
-				5A82310D27C87EB100E61C86 /* Embed App Extensions */,
+				5A82310D27C87EB100E61C86 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -601,7 +601,7 @@
 				163C1B40263A5AE500E1A69C /* Sources */,
 				163C1B41263A5AE500E1A69C /* Frameworks */,
 				163C1B42263A5AE500E1A69C /* Resources */,
-				5A701DF227C8BF9C00CB31B0 /* Embed App Extensions */,
+				5A701DF227C8BF9C00CB31B0 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -682,7 +682,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					163C1B3B263A5AE500E1A69C = {
 						CreatedOnToolsVersion = 12.5;
@@ -1054,6 +1054,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1114,6 +1115,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1144,7 +1146,9 @@
 				DEVELOPMENT_TEAM = DVQ96RL2KL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_CFBundleDisplayName = XLII;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1170,7 +1174,9 @@
 				DEVELOPMENT_TEAM = DVQ96RL2KL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_CFBundleDisplayName = XLII;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1196,15 +1202,18 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 24;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DVQ96RL2KL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = XLII;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.telethon.XLII;
 				PRODUCT_NAME = XLII;
@@ -1224,15 +1233,18 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 24;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DVQ96RL2KL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = XLII;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.telethon.XLII;
 				PRODUCT_NAME = XLII;
@@ -1251,6 +1263,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 24;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "Shared/Development\\ Assets/ReceiptSwiss.jpg";
 				DEVELOPMENT_TEAM = DVQ96RL2KL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1263,8 +1276,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 1.0.2;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.telethon.XLII.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1284,6 +1297,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 24;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "Shared/Development\\ Assets/ReceiptSwiss.jpg";
 				DEVELOPMENT_TEAM = DVQ96RL2KL;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1296,8 +1310,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 1.0.2;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.telethon.XLII.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1321,13 +1335,13 @@
 				INFOPLIST_FILE = Widget/iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Widget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.telethon.XLII.Widget-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1353,13 +1367,13 @@
 				INFOPLIST_FILE = Widget/iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Widget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.telethon.XLII.Widget-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1380,6 +1394,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DVQ96RL2KL;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.2;
@@ -1401,6 +1416,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = DVQ96RL2KL;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.2;
@@ -1486,7 +1502,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/andreamazz/AMPopTip.git";
 			requirement = {
-				branch = master;
+				branch = main;
 				kind = branch;
 			};
 		};

@@ -10,10 +10,10 @@ import SwiftUI
 import AVFoundation
 import Combine
 
-#if canImport(Appkit)
+#if canImport(AppKit)
 import AppKit
 typealias MyView = NSView
-#else
+#elseif canImport(UIKit)
 import UIKit
 typealias MyView = UIView
 #endif
@@ -21,7 +21,7 @@ typealias MyView = UIView
 
 #if canImport(AppKit)
 struct PreviewHolder: NSViewRepresentable {
-    
+       
     let recognizer:Recognizer
     
     @Binding var zoomLevel:CGFloat
