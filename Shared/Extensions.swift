@@ -27,7 +27,7 @@ public extension Bundle{
     }
 }
 
-extension CGRect:Hashable{
+extension CGRect:@retroactive Hashable{
     public func hash(into hasher: inout Hasher) {
         hasher.combine(origin.x)
         hasher.combine(origin.y)

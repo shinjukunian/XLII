@@ -5,8 +5,8 @@
         "package": "AMPopTip",
         "repositoryURL": "https://github.com/andreamazz/AMPopTip.git",
         "state": {
-          "branch": "main",
-          "revision": "14876b4b168d3019807204c8be353f3d6b837d23",
+          "branch": "master",
+          "revision": "7dbdb2eb98a3e40eda726d8f0af45b50eb962f8f",
           "version": null
         }
       },
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/apple/swift-algorithms.git",
         "state": {
           "branch": null,
-          "revision": "b14b7f4c528c942f121c8b860b9410b2bf57825e",
-          "version": "1.0.0"
+          "revision": "f6919dfc309e7f1b56224378b11e28bab5bccc42",
+          "version": "1.2.0"
         }
       },
       {

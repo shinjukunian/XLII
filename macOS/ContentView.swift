@@ -28,18 +28,19 @@ struct ContentView: View {
         HSplitView{
             ZStack{
                 
-                List{}.listStyle(.sidebar)
+//                List{}.listStyle(.sidebar)
                 InputView(holder: holder)
                     .toolbar(content: {
                         
                     }).frame(minWidth:250, idealWidth: 250, maxWidth: 350)
                     .padding(.top)
                     .edgesIgnoringSafeArea([.bottom])
+                
             }
             
             if showSideBar {
-                    OutputSelectionView(holder: holder)
-                        .frame(minWidth:200, maxWidth: 400)
+                OutputSelectionView(holder: holder)
+                    .frame(minWidth:200, maxWidth: 400)
                 
             }
         }
@@ -76,14 +77,14 @@ struct ContentView: View {
                     .environmentObject(Recognizer())
             }
         })
-//        .importsItemProviders(NSImage.importImageTypes, onImport: {providers in
-//            guard let imageProvider=providers.first(where: {$0.hasRepresentationConforming(toTypeIdentifier: UTType.image.identifier)})else{
-//                return false
-//            }
-//
-//            
-//            return true
-//        })
+        //        .importsItemProviders(NSImage.importImageTypes, onImport: {providers in
+        //            guard let imageProvider=providers.first(where: {$0.hasRepresentationConforming(toTypeIdentifier: UTType.image.identifier)})else{
+        //                return false
+        //            }
+        //
+        //
+        //            return true
+        //        })
     }
     
 }

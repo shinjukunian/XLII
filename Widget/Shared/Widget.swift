@@ -115,13 +115,6 @@ extension Output{
 
 
 extension Color{
-    static var accent:Color{
-#if os(iOS)
-        return Color(uiColor: UIColor(named: "AccentColor") ?? .green)
-#else
-        return Color(nsColor: NSColor(named: "AccentColor") ?? .green)
-#endif
-    }
     
     static var widgetBackground:Color{
 #if os(iOS)

@@ -38,6 +38,7 @@ struct ConversionTableView: View {
 
                 
                 NumericalConversionView(holder: hh, isSelected: selectedDisplayItem == hh)
+
 #if os(macOS)
                     .gesture(TapGesture(count: 2).onEnded({
                         guard selectedDisplayItem != nil,
