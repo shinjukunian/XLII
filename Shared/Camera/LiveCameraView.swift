@@ -17,10 +17,12 @@ struct LiveCameraView: View {
     @EnvironmentObject var recognizer:Recognizer
     @Binding var selectedTextElement:Recognizer.TextElement?
     
+    @State var textElements:[Recognizer.TextElement] = []
+    
     var body: some View {
         ZStack{
             previewView
-            CameraResultView(textElements: recognizer.foundElements, convert: convert, outputType: outputType, aspectRatio: recognizer.videoAspectRatio, ROI: recognizer.useROI ? recognizer.defaultRegionOfInterest : nil, selectedElement: $selectedTextElement)
+            CameraResultView(textElements: textElements, convert: convert, outputType: outputType, aspectRatio: recognizer.videoAspectRatio, ROI: recognizer.useROI ? recognizer.defaultRegionOfInterest : nil, selectedElement: $selectedTextElement)
 
         }
         .ignoresSafeArea()
@@ -41,6 +43,11 @@ struct LiveCameraView: View {
         }.onEnded { val in
             self.lastScaleValue = 1.0
         })
+        .task {
+            for await result in recognizer.stream{
+                self.textElements = result
+            }
+        }
         
     }
     var previewView:some View{

@@ -25,8 +25,7 @@ struct DateView: View{
             let format=self.timeFormat
             
             let separator = Text(verbatim: format.seperator)
-                .foregroundColor(.accent)
-                .fontWeight(.bold)
+
             Text(verbatim: formattedEntry.formattedText(component: format.order[0]))
             
             separator

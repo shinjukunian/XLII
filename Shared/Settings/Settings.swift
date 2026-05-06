@@ -84,6 +84,7 @@ struct SettingsView: View {
             }, header: {
                 Text("Feedback")
             })
+            .navigationBarTitleDisplayMode(.inline)
             
 #endif
             Section(content: {
@@ -98,13 +99,18 @@ struct SettingsView: View {
         }
         .navigationTitle(Text("Settings"))
 #if os(iOS)
-        .navigationViewStyle(.stack)
-       
         .toolbar(content: {
             ToolbarItem(placement: .confirmationAction, content: {
-                Button(action: {
-                    dismiss()
-                }, label: {Text("Done")})
+                if #available(iOS 26.0, *) {
+                    Button(role: .confirm, action: {
+                        dismiss()
+                    }, label: {Text("Done")})
+                } else {
+                    Button(action: {
+                        dismiss()
+                    }, label: {Text("Done")})
+                }
+               
             })
         })
 #endif

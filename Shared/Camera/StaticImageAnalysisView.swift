@@ -11,6 +11,7 @@ import XLIICore
 struct StaticImageAnalysisView: View {
     
     @State var selectedTextElement:Recognizer.TextElement? = nil
+    
     @EnvironmentObject var recognizer:Recognizer
     
     let image:UIImage

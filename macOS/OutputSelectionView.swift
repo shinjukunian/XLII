@@ -54,14 +54,14 @@ struct OutputSelectionView: View {
                 
             }.controlSize(.mini)
             .padding(.vertical, 6.0)
-                .onChange(of: showSelected, perform: {showSelected in
+                .onChange(of: showSelected) {_, showSelected in
                     if showSelected{
                         outputs=availableOutputs.filter({holder.outputs.contains($0)})
                     }
                     else{
                         outputs=availableOutputs
                     }
-                })
+                }
                 
         }
     }
@@ -104,8 +104,7 @@ struct OutputSelectionView: View {
             outputs=availableOutputs
         }
         .searchable(text: $searchText, placement: .automatic, prompt: Text("Search"))
-        .onChange(of: searchText, perform: {text in
-    
+        .onChange(of: searchText, {_, text in
             if text.isEmpty{
                 outputs=availableOutputs
             }
@@ -115,12 +114,12 @@ struct OutputSelectionView: View {
                 })
                 outputs=filtered
             }
-            
         })
-        .onChange(of: sortOrder, perform: {sortOrder in
+        
+        .onChange(of: sortOrder,{_, sortOrder in
             outputs.sort(using: sortOrder)
         })
-        .onChange(of: preferredBases, perform: {p in
+        .onChange(of: preferredBases, {_, p in
             outputs = Output.builtin + p.outputs + Output.availableLocalizedOutputs            
         })
     }

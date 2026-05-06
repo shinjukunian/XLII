@@ -8,7 +8,7 @@
 import Foundation
 import XLIICore
 
-struct OutputPreference:RawRepresentable{
+struct OutputPreference:RawRepresentable, Sendable{
     
     typealias RawValue = String
     

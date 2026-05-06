@@ -110,6 +110,7 @@ class PreviewView: MyView{
         var allowedAccess = false
         let blocker = DispatchGroup()
         blocker.enter()
+        
         AVCaptureDevice.requestAccess(for: .video) { flag in
             allowedAccess = flag
             blocker.leave()

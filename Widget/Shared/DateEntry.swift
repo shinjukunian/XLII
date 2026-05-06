@@ -63,7 +63,7 @@ struct FormattedDate{
     
     let ctx:NumeralConversionHolder.ConversionContext
     
-    static let dummy = FormattedDate(year: 2022, month: 2, day: 25, hour: 12, minute: 12, output: .römisch)
+    @MainActor static let dummy = FormattedDate(year: 2022, month: 2, day: 25, hour: 12, minute: 12, output: .römisch)
     
     init(year:Int, month:Int, day:Int, hour:Int, minute:Int, output:Output){
         self.hour=hour

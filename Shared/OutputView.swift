@@ -14,14 +14,15 @@ struct OutputView: View {
     
     var body: some View {
         contentView
+        
             
-            .onChange(of: holder.results, perform: {results in
-                if let arabic=results.first(where: {$0.type.isDecimal}){
+            .onChange(of: holder.results){
+                if let arabic=holder.results.first(where: {$0.type.isDecimal}){
                     holder.selectedResult = arabic
                 }else{
-                    holder.selectedResult = results.first ?? .empty
+                    holder.selectedResult = holder.results.first ?? .empty
                 }
-            })
+            }
 
         
     }

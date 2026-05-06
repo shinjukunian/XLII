@@ -44,7 +44,7 @@ struct ContentView: View {
                 CameraView().environmentObject(holder)
             })
             .sheet(isPresented: $showSettings, content: {
-                NavigationView{
+                NavigationStack{
                     SettingsView()  
                 }
             })
@@ -112,9 +112,10 @@ struct ContentView: View {
                 })
                 .padding(.vertical)
                 .sheet(isPresented: $showLanguageSelection, onDismiss: {}, content: {
-                    NavigationView{
+                    NavigationStack{
                         OutputSelectionView(holder: holder)
                             .navigationTitle(Text("Output Selection"))
+                            .navigationBarTitleDisplayMode(.inline)
                     }
                 })
         }

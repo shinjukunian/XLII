@@ -9,7 +9,7 @@ import Foundation
 
 
 /// An `enum` to encapsulate output formatting
-public enum Output: Identifiable, Codable, Equatable, RawRepresentable, Hashable, CustomStringConvertible{
+public enum Output: Identifiable, Codable, Equatable, RawRepresentable, Hashable, CustomStringConvertible, Sendable{
     
     public typealias RawValue = String
     

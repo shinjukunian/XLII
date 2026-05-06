@@ -11,7 +11,7 @@ import CoreGraphics
 import SwiftUI
 
 extension Recognizer{
-    struct TextElement: Equatable, Identifiable{
+    struct TextElement: Equatable, Identifiable, Sendable{
        
         enum TextElementType:Equatable {
             case arabicNumber(number:Int)

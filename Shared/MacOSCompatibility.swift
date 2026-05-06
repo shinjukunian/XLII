@@ -54,6 +54,6 @@ extension NSImage{
     var cgImage:CGImage?{
         return self.cgImage(forProposedRect: nil, context: nil, hints: nil)
     }
-    static var importImageTypes = NSImage.imageTypes.compactMap { UTType($0) }
+    static let importImageTypes = NSImage.imageTypes.compactMap { UTType($0) }
 }
 #endif

@@ -42,9 +42,9 @@ struct CameraView: View {
                             if let selectedTextElement = selectedTextElement {
                                 holder.input = selectedTextElement.text
                             }
-                            else if let first=recognizer.foundElements.first(where: {$0.type.isNumber}){
-                                holder.input = first.text
-                            }
+//                            else if let first=recognizer.foundElements.first(where: {$0.type.isNumber}){
+//                                holder.input = first.text
+//                            }
                             dismiss()
                         })
                     }

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import AVFoundation
 
 /// A class that provides formatted output of an arabic numer in a given format.
 public class NumeralConversionHolder: Equatable{
@@ -44,6 +45,7 @@ public class NumeralConversionHolder: Equatable{
     }()
     
     lazy var formatter=ExotischeZahlenFormatter()
+    lazy var synthesizer = AVSpeechSynthesizer()
     
     public let noValidNumber=NSLocalizedString("Conversion not possible.", comment: "")
     let noInput = NSLocalizedString("No Input", comment: "")
@@ -122,7 +124,11 @@ public class NumeralConversionHolder: Equatable{
     
     /// speak the number, mostly useful for spell-out or roman numerals
     public func speak(){
-        formatter.speak(input: SpeechOutput(text: String(input), format: .arabisch), output: SpeechOutput(text: formattedOutput, format: output))
+        self.synthesizer.stopSpeaking(at: .immediate)
+        let utterances = self.formatter.utterance(input: SpeechOutput(text: String(input), format: .arabisch), output: SpeechOutput(text: formattedOutput, format: output))
+        for utterance in utterances {
+            self.synthesizer.speak(utterance)
+        }
     }
     
     

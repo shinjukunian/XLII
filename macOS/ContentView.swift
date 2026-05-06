@@ -10,6 +10,7 @@ import Combine
 import UniformTypeIdentifiers
 
 struct ContentView: View {
+    
     struct URLItem:Identifiable,Equatable,Hashable{
         let url:URL
         var id: String{
@@ -20,36 +21,30 @@ struct ContentView: View {
     @StateObject var holder=ConversionInputHolder()
     @State private var presentingCamera = false
     
-    @AppStorage(UserDefaults.Keys.showSideBarKey) var showSideBar:Bool = true
+    @AppStorage(UserDefaults.Keys.showSideBarKey) var showSideBar:Bool = false
     
     @State var droppedURL:URLItem? = nil
     
     var body: some View{
-        HSplitView{
-            ZStack{
+        InputView(holder: holder)
+            .toolbar(content: {
                 
-//                List{}.listStyle(.sidebar)
-                InputView(holder: holder)
-                    .toolbar(content: {
-                        
-                    }).frame(minWidth:250, idealWidth: 250, maxWidth: 350)
-                    .padding(.top)
-                    .edgesIgnoringSafeArea([.bottom])
-                
-            }
-            
-            if showSideBar {
-                OutputSelectionView(holder: holder)
-                    .frame(minWidth:200, maxWidth: 400)
-                
-            }
-        }
-        .toolbar(content: {
-            ToolbarItem(placement: .status, content: {
-                SidebarButton(showSideBar: $showSideBar)
             })
+//            .frame(minWidth:250, maxWidth: 350)
+            .padding(.top)
+            .edgesIgnoringSafeArea([.bottom])
+        
+        .inspector(isPresented: $showSideBar, content: {
+            OutputSelectionView(holder: holder)
+//                .frame(minWidth:200, maxWidth: 400)
+        })
+
+        .toolbar(content: {
             ToolbarItem(placement: .automatic, content: {
                 CameraButton(showCamera: $presentingCamera)
+            })
+            ToolbarItem(placement: .automatic, content: {
+                SidebarButton(showSideBar: $showSideBar)
             })
         })
         .touchBar(content: {

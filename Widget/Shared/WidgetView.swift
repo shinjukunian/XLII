@@ -15,26 +15,35 @@ struct WidgetView: View {
     
     
     var body: some View {
-        ZStack{
-            Rectangle().fill(Color.widgetBackground)
-            
+        
+        HStack{
             if let formatted=entry.formattedDate{
                 
-                VStack(spacing: 4){
+                VStack(spacing: 2){
                     HStack{
                         Text(verbatim: entry.output.description)
                             .font(.caption2)
-                            
                             .multilineTextAlignment(.center)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.accent)
                         Spacer()
                     }
+               
                     VStack(alignment: .center){
-                        timeStack(formatted: formatted)
-                        dateStack(formatted: formatted)
+                        
+                        if #available(iOS 26.0, macOS 26.0, *) {
+                            GlassEffectContainer(content: {
+                                timeStack(formatted: formatted)
+                                dateStack(formatted: formatted)
+                            })
+                            
+                        } else {
+                            timeStack(formatted: formatted)
+                            dateStack(formatted: formatted)
+                        }
                     }
-                }.padding(6)
-    
+                   
+                }
+                
             }
             else{
                 Text(entry.date.formatted(date: .abbreviated, time: .shortened))
@@ -42,8 +51,13 @@ struct WidgetView: View {
                     .font(.headline)
                 
             }
+        
+        }
+        .containerBackground(for: .widget){
+            Color.widgetBackground
         }
         .widgetURL(entry.deepLinkURL)
+        
     }
     
     @ViewBuilder
@@ -54,13 +68,15 @@ struct WidgetView: View {
                 .lineLimit(1)
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.1)
+                .foregroundStyle(.accent)
             if entry.showDate{
-                Text(entry.date.formatted(date: .omitted, time: .shortened)).font(.caption).foregroundColor(.secondary)
+                Text(entry.date.formatted(date: .omitted, time: .shortened)).font(.caption).foregroundColor(.primary)
             }
             
-        }.frame(maxWidth: .infinity).padding(5)
+        }
+        .frame(maxWidth: .infinity).padding(5)
             .background(content: {
-                RoundedRectangle(cornerRadius: 8).fill(.background)
+                RoundedRectangle(cornerRadius: 8).fill(Color.widgetBackground)
             })
     }
     
@@ -71,11 +87,12 @@ struct WidgetView: View {
                 .minimumScaleFactor(0.1)
                 .lineLimit(1)
                 .multilineTextAlignment(.center)
+                .foregroundStyle(.accent)
             if entry.showDate{
-                Text(entry.date.formatted(date: .numeric, time: .omitted)).font(.caption).foregroundColor(.secondary)
+                Text(entry.date.formatted(date: .numeric, time: .omitted)).font(.caption).foregroundColor(.primary)
             }
         }.frame(maxWidth: .infinity).padding(5).background(content: {
-            RoundedRectangle(cornerRadius: 8).fill(.background
+            RoundedRectangle(cornerRadius: 8).fill(Color.widgetBackground
             )
         })
     }

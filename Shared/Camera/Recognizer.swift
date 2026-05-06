@@ -26,23 +26,22 @@ class Recognizer:NSObject, Recognizing, SceneStability, ObservableObject{
     
     @Published var state:SceneStabilityState = .notSteady
     @Published var videoAspectRatio:CGFloat=1
-    @Published var foundElements = [TextElement]()
+//    @Published var foundElements = [TextElement]()
+    
+    let stream: AsyncStream<[TextElement]>
+    internal let continuation: AsyncStream<[TextElement]>.Continuation
     
     var regionOfInterest = Recognizer.fullAreaROI
     
-    lazy var ciContext:CIContext={
-        guard let device=MTLCreateSystemDefaultDevice() else{fatalError()}
-        let ctx=CIContext(mtlDevice: device)
-        return ctx
-    }()
+    let ciContext:CIContext
     
-    lazy var sequenceRequestHandler = VNSequenceRequestHandler()
+   let sequenceRequestHandler = VNSequenceRequestHandler()
     
     lazy var request: VNRecognizeTextRequest = VNRecognizeTextRequest(completionHandler: {[weak self] request, error in
         self?.recognizeTextHandler(request: request, error: error)
     })
    
-    internal var transpositionHistoryPoints: [CGPoint] = [ ]
+    internal var transpositionHistoryPoints: [CGPoint] = []
     var previousPixelBuffer: CVPixelBuffer?
     
     var textOrientation = CGImagePropertyOrientation.up
@@ -76,14 +75,18 @@ class Recognizer:NSObject, Recognizing, SceneStability, ObservableObject{
     }
     
     
-    
-    
     override init() {
+        guard let device=MTLCreateSystemDefaultDevice() else{fatalError()}
+        self.ciContext=CIContext(mtlDevice: device)
+        
+        let s = AsyncStream.makeStream(of: [TextElement].self)
+        self.stream = s.stream
+        self.continuation = s.continuation
+        
         super.init()
+        self.useROI = useROI
         request.recognitionLevel = .fast
         request.usesLanguageCorrection = false
-//        request.recognitionLanguages=["zh-Hant", "en"]
-        self.useROI = useROI
         
         
     }
@@ -98,6 +101,7 @@ class Recognizer:NSObject, Recognizing, SceneStability, ObservableObject{
     
     func start(){
         session?.startRunning()
+        
     }
     
     func stop(){
@@ -106,19 +110,20 @@ class Recognizer:NSObject, Recognizing, SceneStability, ObservableObject{
     
     func recognizeTextHandler(request: VNRequest, error: Error?) {
        
-        
         guard let results = request.results as? [VNRecognizedTextObservation] else {
             return
         }
         let elements=analyze(results: results, useROI: self.useROI)
-        DispatchQueue.main.async {
-            self.foundElements=elements
-        }
+        self.continuation.yield(elements)
+//        Task{
+//            self.foundElements=elements
+//
+//        }
        
     }
     
     
-    func analyze(results:[VNRecognizedTextObservation], useROI:Bool)->[TextElement]{
+    nonisolated func analyze(results:[VNRecognizedTextObservation], useROI:Bool)->[TextElement]{
         let maximumCandidates = 1
         var elements=[TextElement]()
         
@@ -149,6 +154,7 @@ class Recognizer:NSObject, Recognizing, SceneStability, ObservableObject{
         return elements
     }
     
+    @MainActor
     func analyze(image:CGImage) async -> [TextElement] {
         
         let handler = VNImageRequestHandler(cgImage:image, orientation: .up, options: [.ciContext:self.ciContext])
@@ -169,7 +175,7 @@ class Recognizer:NSObject, Recognizing, SceneStability, ObservableObject{
     }
     
     
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    nonisolated func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
         let state=self.assessStability(sampleBuffer: sampleBuffer)
         
@@ -185,9 +191,9 @@ class Recognizer:NSObject, Recognizing, SceneStability, ObservableObject{
             }
         }
         
-        DispatchQueue.main.async {
-            self.state=state
-        }
+//        DispatchQueue.main.async {
+//            self.state=state
+//        }
     }
     
     

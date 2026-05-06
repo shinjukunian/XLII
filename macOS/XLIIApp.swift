@@ -19,14 +19,14 @@ struct XLIIApp: App {
             ContentView()
 
         }
-        .windowToolbarStyle(.unifiedCompact(showsTitle: true))
+        .windowToolbarStyle(.unified(showsTitle: true))
         .windowStyle(.titleBar)
         .commands(content: {
             AppCommands()
-//            ImportFromDevicesCommands()
+            InspectorCommands()
         })
         .defaultAppStorage(.shared)
-        
+        .windowResizability(.contentSize)
         
         Settings {
             VStack{

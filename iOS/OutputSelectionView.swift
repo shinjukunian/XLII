@@ -61,7 +61,7 @@ struct OutputSelectionView: View {
             
         }
         .searchable(text: $searchText, placement: .automatic, prompt: Text("Search"))
-        .onChange(of: selection, perform: {selection in
+        .onChange(of: selection){
             let present=Set(holder.outputs)
             let inserted=selection.subtracting(present)
             let deleted=present.subtracting(selection)
@@ -73,15 +73,22 @@ struct OutputSelectionView: View {
             withAnimation{
                 holder.outputs = new
             }
-        })
+        }
         
         .toolbar(content: {
             
             ToolbarItem(placement: .confirmationAction, content: {
                 if isPresented{
-                    Button(action: {
-                        dismiss()
-                    }, label: {Text("Done")})
+                    if #available(iOS 26.0, *) {
+                        Button(role: .confirm, action:{
+                            dismiss()
+                        }, label: {Text("Done")})
+                    } else {
+                        Button(action: {
+                            dismiss()
+                        }, label: {Text("Done")})
+                    }
+                    
                 }
                 else{
                     EmptyView()
@@ -106,10 +113,10 @@ struct OutputSelectionView: View {
         .onSubmit(of: .search, {
             
         })
-        .onChange(of: searchText, perform: {text in
-            self.searchTextChanged(text: text)
-        })
-        .onChange(of: showSelected, perform: {showSelected in
+        .onChange(of: searchText){
+            self.searchTextChanged(text: searchText)
+        }
+        .onChange(of: showSelected){
             withAnimation{
                 if showSelected{
                     self.displayInputs = zip(availableDisplayOutputs,OutputSelectionViewSection.titles) .map{(list,title) in
@@ -121,7 +128,7 @@ struct OutputSelectionView: View {
                     self.displayInputs=availableDisplayOutputs
                 }
             }
-        })
+        }
         
         
     }

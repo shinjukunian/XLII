@@ -9,7 +9,7 @@ import Foundation
 import AVFoundation
 
 /// A class that converts between different (exotic) numerical formats
-public class ExotischeZahlenFormatter{
+public final class ExotischeZahlenFormatter:Sendable{
     
     /// A struct that holds the parsed input
     public struct NumericalOutput: Equatable{
@@ -37,7 +37,6 @@ public class ExotischeZahlenFormatter{
         public let locale:InputLocale
     }
     
-    lazy var synthesizer:AVSpeechSynthesizer=AVSpeechSynthesizer()
     
     public init(){}
     
@@ -395,16 +394,16 @@ public class ExotischeZahlenFormatter{
     }
     
     
-    /// Speak a number and its conversion
-    /// - Parameters:
-    ///   - input: The `SpeechInput` for the input number
-    ///   - output: The `SpeechInput` for the output number
-    public func speak(input:SpeechOutput, output:SpeechOutput){
-        self.synthesizer.stopSpeaking(at: .immediate)
-        
-        self.utterance(input: input, output: output).forEach({u in
-            self.synthesizer.speak(u)
-        })
-    }
+//    /// Speak a number and its conversion
+//    /// - Parameters:
+//    ///   - input: The `SpeechInput` for the input number
+//    ///   - output: The `SpeechInput` for the output number
+//    public func speak(input:SpeechOutput, output:SpeechOutput){
+//        self.synthesizer.stopSpeaking(at: .immediate)
+//        
+//        self.utterance(input: input, output: output).forEach({u in
+//            self.synthesizer.speak(u)
+//        })
+//    }
     
 }
